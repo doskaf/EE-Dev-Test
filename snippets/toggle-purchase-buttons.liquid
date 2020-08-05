@@ -1,0 +1,3 @@
+{% if settings.toggle_buy_now %} 
+  <a class="btn toggle-btn" href="/cart/{{ product.variants.first.id }}:1" {% if product.available != true %}style="display: none"{% endif %}>Buy Now</a>
+{% endif %}
