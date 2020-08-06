@@ -48,3 +48,9 @@
   {% include 'product-price-listing', product: product, show_vendor: show_vendor %}
 
 </div>
+
+{% include 'toggle-purchase-buttons' %}
+{% comment %}
+Appending Buy Now button below each product card.
+Logic for button display according to toggle settings is handled in 'toggle-purchase-buttons' snippet.
+{% endcomment %}

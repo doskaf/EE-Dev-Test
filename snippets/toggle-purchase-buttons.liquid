@@ -1,0 +1,23 @@
+{% comment %}
+Below are the Add to Cart and Buy Now 'buttons' that are shown on screen according to the toggle settings.
+These 'buttons' are modified links and forms for ease of redirection.
+If an item is out of stock, they are hidden completely in order to prevent the item from attempting to be added to the cart altogether.
+Ideally, redirection and validation of available stock would not be handled this way.
+It makes the most sense to me to use the logic that is already implemented within the purchase buttons for an individual product page,
+but I was not able to find how/where that logic was actually implemented for those buttons in time, so I had to settle for what you see below.
+{% endcomment %}
+
+{% if settings.toggle_buy_now and settings.toggle_add_to_cart %}
+  <form method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+      <input type={% if product.available != true %}"hidden"{% endif %}"submit" value="Add to Cart" class="btn toggle-add-to-cart" />
+      {% comment %}
+      This final input element is a bit of a 'band-aid' fix for the forced redirection to the cart page that I could not figure out how to work around.
+      Ideally, the redirection would be prevented entirely.
+      The page still redirects, but it just looks like a page reload.
+      {% endcomment %}
+      <input type="hidden" name="return_to" value="back" />
+  </form>
+{% elsif settings.toggle_buy_now %} 
+  <a class="btn toggle-btn" href="/cart/{{ product.variants.first.id }}:1" {% if product.available != true %}style="display: none"{% endif %}>Buy Now</a>
+{% endif %}

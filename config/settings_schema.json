@@ -1405,5 +1405,22 @@
         "default": true
       }
     ]
+  },
+  {
+    "name": "Collection",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "toggle_buy_now",
+        "label": "Toggle 'Buy Now' button",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "toggle_add_to_cart",
+        "label": "Toggle 'Add to Cart' button",
+        "default": false
+      }
+    ]
   }
 ]
